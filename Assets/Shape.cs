@@ -12,6 +12,9 @@ public abstract class Shape : MonoBehaviour
 	public abstract void AddSurface(float amount);
 	public abstract void SetSurface(float amount);
 
+	protected abstract void AddSurfaceInternal (float amount);
+
+
 	void OnTriggerEnter2D(Collider2D other) 
 	{
 		if (OnShapeCollision != null)
@@ -22,6 +25,23 @@ public abstract class Shape : MonoBehaviour
 			{
 				OnShapeCollision(this, shapeOther);
 			}
+		}
+	}
+
+
+	// continual adding
+	protected IEnumerator AddSurfaceCoroutine(float amount, float time)
+	{
+		float amountFull = amount;
+		
+		while (amount > 0)
+		{
+			float uAmount = Mathf.Min(amountFull * Time.deltaTime / time, amount);
+			
+			AddSurfaceInternal(uAmount);
+			amount -= uAmount;
+			
+			yield return 0;
 		}
 	}
 	

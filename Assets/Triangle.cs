@@ -76,7 +76,7 @@ public class Triangle : Shape
 
 	public override void AddSurface(float amount)
 	{
-		SetSurface (GetSurface () + amount);
+		StartCoroutine (AddSurfaceCoroutine (amount, 0.3f));
 	}
 
 	public override void SetSurface(float surface)
@@ -84,4 +84,9 @@ public class Triangle : Shape
 		Size = (float)Math.Sqrt (surface * 4.0f / Mathf.Sqrt (3.0f));
 	}
 
+
+	protected override void AddSurfaceInternal(float amount)
+	{
+		SetSurface (GetSurface () + amount);
+	}
 }

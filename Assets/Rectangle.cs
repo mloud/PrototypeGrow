@@ -56,10 +56,7 @@ public class Rectangle : Shape
 	
 	public override void AddSurface(float amount)
 	{
-		float newSurface = GetSurface () + amount;
-		
-		size.y = Mathf.Sqrt (newSurface / Aspect());
-		size.x = size.y * Aspect();
+		StartCoroutine (AddSurfaceCoroutine (amount, 0.3f));
 	}
 	
 	public override void SetSurface(float surface)
@@ -67,4 +64,14 @@ public class Rectangle : Shape
 		size.y = Mathf.Sqrt (surface / Aspect());
 		size.x = size.y * Aspect();
 	}
+
+
+	protected override void AddSurfaceInternal(float amount)
+	{
+		float newSurface = GetSurface () + amount;
+		
+		size.y = Mathf.Sqrt (newSurface / Aspect());
+		size.x = size.y * Aspect();
+	}
+
 }

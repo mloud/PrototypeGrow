@@ -53,15 +53,19 @@ public class Circle : Shape
 
 	public override void AddSurface(float amount)
 	{
-		float newSurface = GetSurface () + amount;
-
-		float newRadius = Mathf.Sqrt (newSurface / Mathf.PI);
-	
-		Radius = newRadius;
+		StartCoroutine (AddSurfaceCoroutine (amount, 0.3f));
 	}
 
 	public override void SetSurface(float surface)
 	{
 		Radius = Mathf.Sqrt (surface / Mathf.PI);
 	}
+
+
+	protected override void AddSurfaceInternal(float amount)
+	{
+		SetSurface (GetSurface () + amount);
+	}
+	
+
 }
