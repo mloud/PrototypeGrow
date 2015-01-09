@@ -51,16 +51,10 @@ public class Circle : Shape
 		return Mathf.PI * Radius * Radius;
 	}
 
-	public override void AddSurface(float amount)
-	{
-		StartCoroutine (AddSurfaceCoroutine (amount, 0.3f));
-	}
-
 	public override void SetSurface(float surface)
 	{
 		Radius = Mathf.Sqrt (surface / Mathf.PI);
 	}
-
 
 	protected override void AddSurfaceInternal(float amount)
 	{

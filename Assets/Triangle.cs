@@ -64,19 +64,11 @@ public class Triangle : Shape
 	}
 
 	void Init()
-	{
-	}
-
-
+	{}
 
 	public override float GetSurface ()
 	{
 		return size * size * Mathf.Sqrt(3) / 4.0f;
-	}
-
-	public override void AddSurface(float amount)
-	{
-		StartCoroutine (AddSurfaceCoroutine (amount, 0.3f));
 	}
 
 	public override void SetSurface(float surface)

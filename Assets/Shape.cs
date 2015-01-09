@@ -8,14 +8,18 @@ public abstract class Shape : MonoBehaviour
 
 	public ShapeCollisionDelegate OnShapeCollision;
 
-	public abstract float GetSurface ();
-	public abstract void AddSurface(float amount);
-	public abstract void SetSurface(float amount);
+	public void AddSurface(float amount)
+	{
+		StartCoroutine (AddSurfaceCoroutine (amount, 0.3f));
+	}
 
+
+	public abstract float GetSurface ();
+	public abstract void SetSurface(float amount);
 	protected abstract void AddSurfaceInternal (float amount);
 
 
-	void OnTriggerEnter2D(Collider2D other) 
+	private void OnTriggerEnter2D(Collider2D other) 
 	{
 		if (OnShapeCollision != null)
 		{

@@ -53,12 +53,7 @@ public class Rectangle : Shape
 	{
 		return size.x * size.y;
 	}
-	
-	public override void AddSurface(float amount)
-	{
-		StartCoroutine (AddSurfaceCoroutine (amount, 0.3f));
-	}
-	
+
 	public override void SetSurface(float surface)
 	{
 		size.y = Mathf.Sqrt (surface / Aspect());

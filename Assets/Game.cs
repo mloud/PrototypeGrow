@@ -7,7 +7,7 @@ public class Game : MonoBehaviour
 	private Shape hitShape = null;
 
 	private List<Shape> Shapes { get; set; }
-
+	private Playground Playground { get; set; }
 
 	private enum State
 	{
@@ -21,6 +21,8 @@ public class Game : MonoBehaviour
 	{
 		Shapes = new List<Shape> (GameObject.FindObjectsOfType<Shape>());
 	
+		Playground = GameObject.FindObjectOfType<Playground> ();
+
 		Shapes.ForEach (x => x.OnShapeCollision = this.OnShapeCollision);
 
 		CurrState = State.Running;
