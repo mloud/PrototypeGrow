@@ -31,6 +31,8 @@ public class Game : MonoBehaviour
 	void Update ()
 	{
 		ProcessTouch ();
+
+		Hud.Instance.SetScore (GetScore ());
 	}
 
 
@@ -101,6 +103,14 @@ public class Game : MonoBehaviour
 		}
 	}
 
+
+	private int GetScore()
+	{
+		float sum = 0;
+		Shapes.ForEach (x => sum += x.GetSurface ());
+	
+		return (int)((sum / Playground.GetSurface ()) * 100);
+	}
 
 	private void GameOver()
 	{
